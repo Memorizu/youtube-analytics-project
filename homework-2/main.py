@@ -1,5 +1,6 @@
 from src.channel import Channel
 
+
 if __name__ == '__main__':
     vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
 
@@ -9,7 +10,7 @@ if __name__ == '__main__':
     print(vdud.url)  # https://www.youtube.com/channel/UCMCgOm8GZkHp8zJ6l7_hIuA
 
     # менять не можем
-    vdud.channel_id = 'Новое название'
+    # vdud.channel_id = 'Новое название'
     # AttributeError: property 'channel_id' of 'Channel' object has no setter
 
     # можем получить объект для работы с API вне класса
