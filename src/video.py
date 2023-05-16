@@ -37,11 +37,3 @@ class Video:
     def likes_count(self):
         stat = self._video_stat()
         return stat['items'][0]['statistics']['likeCount']
-
-
-v = Video('9lO06Zxhu88')
-print(v.title)
-print(v.view_count)
-print(v.likes_count)
-print(v._video_stat())
-print(v.url_video)

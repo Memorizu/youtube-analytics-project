@@ -1,4 +1,5 @@
-from src.video import Video, PLVideo
+from src.video import Video
+from src.plvideo import PLVideo
 
 if __name__ == '__main__':
     # Создаем два экземпляра класса
