@@ -12,7 +12,7 @@ class Video:
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     def __init__(self, video_id: str) -> None:
-        if self.__check_connection():
+        if self.__is_connect():
             self.video_id = video_id
             self.title = self.video_title()
             self.url_video = f'https://www.youtube.com/watch?v={self.video_id}'
@@ -28,7 +28,7 @@ class Video:
     def __str__(self) -> str:
         return self.title
 
-    def __check_connection(self):
+    def __is_connect(self):
         try:
             self._video_stat()
             return True
