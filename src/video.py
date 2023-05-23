@@ -12,16 +12,35 @@ class Video:
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     def __init__(self, video_id: str) -> None:
-        self.video_id = video_id
-        self.title = self.video_title()
-        self.url_video = f'https://www.youtube.com/watch?v={self.video_id}'
-        self.view_count = self.view_count()
-        self.likes_count = self.likes_count()
+        if self.__check_connection():
+            self.video_id = video_id
+            self.title = self.video_title()
+            self.url_video = f'https://www.youtube.com/watch?v={self.video_id}'
+            self.view_count = self.view_count()
+            self.likes_count = self.likes_count()
+        else:
+            self.video_id = video_id
+            self.title = None
+            self.url_video = None
+            self.view_count = None
+            self.likes_count = None
 
     def __str__(self) -> str:
         return self.title
 
+    def __check_connection(self):
+        try:
+            self._video_stat()
+            return True
+        except IndexError:
+            return
+        except TypeError:
+            return
+        except AttributeError:
+            return
+
     def _video_stat(self):
+
         return self.youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                           id=self.video_id
                                           ).execute()
